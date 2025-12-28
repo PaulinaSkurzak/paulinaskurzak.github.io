@@ -13,56 +13,56 @@
       line-height: 1.6;
       color: #111;
     }
-    h1 { margin-bottom: 6px; }
-    h2 { margin-top: 28px; margin-bottom: 10px; }
-    .subtitle { margin-top: 0; color: #333; }
-    .links { margin: 14px 0 24px; }
-    .links a { margin-right: 12px; }
-
+    h1 {
+      margin-bottom: 6px;
+    }
+    h2 {
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      margin-top: 0;
+      color: #333;
+    }
+    .links {
+      margin: 16px 0 28px;
+    }
+    .links a {
+      margin-right: 14px;
+    }
     .card {
       border: 1px solid #e6e6e6;
       border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 14px;
+      padding: 16px;
+      margin-bottom: 18px;
     }
-    .card h3 { margin: 0 0 6px; }
-    .meta {
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+    .footer {
+      margin-top: 28px;
       font-size: 0.95rem;
       color: #444;
-      margin: 6px 0 0;
     }
-    .tags {
-      font-size: 0.9rem;
-      color: #444;
-      margin: 8px 0 0;
-    }
-    .tag {
-      display: inline-block;
-      border: 1px solid #ddd;
-      border-radius: 999px;
-      padding: 2px 10px;
-      margin: 6px 6px 0 0;
-    }
-
     a {
       color: #0056b3;
       text-decoration: none;
     }
-    a:hover { text-decoration: underline; }
-
-    .footer { margin-top: 22px; font-size: 0.95rem; color: #333; }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
   <h1>Paulina Skurzak</h1>
   <p class="subtitle">
-    Data Science (AI) student focused on applied machine learning, computational modeling,
-    and research-driven systems.
+    Data Science (AI) student focused on applied machine learning,
+    computational modeling, and research-driven systems.
   </p>
 
   <div class="links">
-    <a href="./resume.pdf">Resume (PDF)</a>
     <a href="https://github.com/PaulinaSkurzak">GitHub</a>
     <a href="https://linkedin.com/in/YOUR-LINK">LinkedIn</a>
     <a href="mailto:YOUR@EMAIL.COM">Email</a>
@@ -70,89 +70,52 @@
 
   <h2>Selected Projects</h2>
 
+  <!-- Medical Insurance Project -->
   <div class="card">
-    <h3>Robustness Analysis of LLM Safety</h3>
+    <h3>🚑 Predicting Medical Insurance Costs</h3>
+    <p><em>Final Project — Statistical Data Analysis</em></p>
     <p>
-      Evaluated refusal consistency under adversarial prompt framings (e.g., role-play, justification,
-      fictional context) to identify safety failure modes and assess robustness for real-world deployment.
+      My teammates and I analyzed a medical insurance dataset to understand how
+      demographic and lifestyle factors influence healthcare costs. After cleaning
+      and exploring the data, we built multiple regression models and identified
+      smoking and BMI as the dominant cost drivers.
     </p>
-    <p class="meta"><strong>Deliverables:</strong> Technical report + experiment code</p>
-    <div class="tags">
-      <span class="tag">LLM Safety</span>
-      <span class="tag">Evaluation</span>
-      <span class="tag">Prompt Robustness</span>
-    </div>
     <p>
-      <a href="#">Code</a> ·
-      <a href="#">Report</a>
+      Our best-performing model included an interaction between BMI and smoking,
+      achieving an adjusted R² of <strong>0.84</strong>, highlighting how lifestyle
+      factors compound financial risk in healthcare.
+    </p>
+    <p>
+      <a href="./reports/medical_insurance_handout.pdf">Project Handout (PDF)</a>
     </p>
   </div>
 
+  <!-- Kindle / Data Visualization Project -->
   <div class="card">
-    <h3>Global Health Data Modeling (Research Fellowship)</h3>
+    <h3>📚 Exploring the Kindle Marketplace</h3>
+    <p><em>Final Project — Data Visualization</em></p>
     <p>
-      Built reproducible preprocessing and imputation pipelines for multi-country pediatric surgical datasets.
-      Compared mean, regression, MICE, and random forest imputation using RMSE and R².
+      My team and I analyzed over <strong>130,000 Amazon Kindle book listings</strong>
+      to explore trends in pricing, ratings, categories, and participation in Kindle
+      Unlimited. We designed an interactive dashboard to support data-driven
+      publishing and pricing decisions.
     </p>
-    <p class="meta"><strong>Highlight:</strong> Random forest (RMSE 0.037) and MICE (RMSE 0.041) minimized error.</p>
-    <div class="tags">
-      <span class="tag">Python</span>
-      <span class="tag">R</span>
-      <span class="tag">Imputation</span>
-      <span class="tag">Health Data</span>
-    </div>
     <p>
-      <a href="#">Notebook</a> ·
-      <a href="#">Write-up</a>
+      Using Power BI, we created visualizations highlighting oversaturated versus
+      emerging categories, publication trends over time, and differences between
+      Kindle Unlimited and non-participating titles.
+    </p>
+    <p>
+      <a href="https://app.powerbi.com/view?r=eyJrIjoiOGQ5Y2QzZmItZmNmMy00ZDZiLWFjNmUtZTEwMzFmN2I0MmJiIiwidCI6ImI5M2NiYzNlLTY2MWQtNDA1OC04NjkzLWE4OTdiOTI0YjhkNyIsImMiOjF9">
+        Interactive Dashboard
+      </a>
+      ·
+      <a href="./reports/kindle_data_viz_report.docx">Project Report (DOCX)</a>
     </p>
   </div>
 
-  <div class="card">
-    <h3>CNN Classification on EMNIST (Balanced)</h3>
-    <p>
-      Trained convolutional neural networks in PyTorch for multi-class character recognition and evaluated
-      performance using a reproducible training/testing pipeline.
-    </p>
-    <p class="meta"><strong>Deliverables:</strong> Training code + results summary</p>
-    <div class="tags">
-      <span class="tag">PyTorch</span>
-      <span class="tag">CNN</span>
-      <span class="tag">Computer Vision</span>
-    </div>
-    <p>
-      <a href="#">Code</a> ·
-      <a href="#">Results</a>
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Reinforcement Learning Maze Solver (Q-learning + UCB)</h3>
-    <p>
-      Implemented a Q-learning agent with Upper Confidence Bound (UCB) action selection to learn navigation
-      policies in a 55×55 maze environment; visualized the learned solution path via animation.
-    </p>
-    <p class="meta"><strong>Deliverables:</strong> Code + animation</p>
-    <div class="tags">
-      <span class="tag">Reinforcement Learning</span>
-      <span class="tag">Q-learning</span>
-      <span class="tag">UCB</span>
-    </div>
-    <p>
-      <a href="#">Code</a> ·
-      <a href="#">Animation</a>
-    </p>
-  </div>
-
-  <h2>Skills</h2>
-  <p>
-    Python · R · SQL · PyTorch · scikit-learn · pandas/NumPy · model evaluation · missing data/imputation · Git · Jupyter
-  </p>
-
-  <h2>Contact</h2>
   <p class="footer">
-    GitHub: <a href="https://github.com/PaulinaSkurzak">github.com/PaulinaSkurzak</a><br>
-    LinkedIn: <a href="https://linkedin.com/in/YOUR-LINK">linkedin.com/in/YOUR-LINK</a><br>
-    Email: <a href="mailto:YOUR@EMAIL.COM">YOUR@EMAIL.COM</a>
+    Resume available upon request.
   </p>
 
 </body>
