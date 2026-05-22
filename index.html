@@ -57,6 +57,7 @@
 <body>
 
   <h1>Paulina Skurzak</h1>
+
   <p class="subtitle">
     Data Science (AI) student working at the intersection of machine learning,
     data analysis, and real-world applications.
@@ -68,172 +69,164 @@
     <a href="mailto:pskurzak@wm.edu">Email</a>
   </div>
 
-  <h2>Selected Data & Analytics Projects</h2>
+  <h2>Research & Technical Projects</h2>
 
   <!-- Data Visualization -->
   <div class="card">
     <h3>Exploring the Kindle Marketplace</h3>
     <p><em>Market Analysis and Data Visualization</em></p>
+
     <p>
       Analyzed over 130,000 Amazon Kindle book listings to examine trends
-      in pricing, ratings, categories, and participation in Kindle Unlimited. Designed an
-      interactive dashboard to support data-driven publishing and pricing decisions.
+      in pricing, ratings, categories, and participation in Kindle Unlimited.
+      Designed an interactive dashboard to support data-driven publishing and
+      pricing decisions.
     </p>
+
     <p>
-      Created Power BI visualizations highlighting oversaturated versus emerging categories,
-      publication trends over time, and differences between Kindle Unlimited and
-      non-participating titles.
+      Created Power BI visualizations highlighting oversaturated versus emerging
+      categories, publication trends over time, and differences between Kindle
+      Unlimited and non-participating titles.
     </p>
+
     <p>
       <a href="https://app.powerbi.com/view?r=eyJrIjoiOGQ5Y2QzZmItZmNmMy00ZDZiLWFjNmUtZTEwMzFmN2I0MmJiIiwidCI6ImI5M2NiYzNlLTY2MWQtNDA1OC04NjkzLWE4OTdiOTI0YjhkNyIsImMiOjF9">
         Interactive Dashboard
       </a>
       ·
-      <a href="./reports/kindle_data_viz_report.docx">Project Report (DOCX)</a>
+      <a href="./reports/kindle_data_viz_report.docx">
+        Project Report (DOCX)
+      </a>
     </p>
   </div>
 
-    <!-- Statistical Data Analysis -->
+  <!-- Statistical Data Analysis -->
   <div class="card">
     <h3>Predicting Medical Insurance Costs</h3>
     <p><em>Regression Modeling and Cost Analysis</em></p>
+
     <p>
-      Analyzed a medical insurance dataset to understand how demographic and lifestyle
-      factors influence healthcare costs. Built and evaluated multiple regression models,
-      identifying smoking and BMI as the dominant cost drivers.
+      Analyzed a medical insurance dataset to understand how demographic and
+      lifestyle factors influence healthcare costs. Built and evaluated multiple
+      regression models, identifying smoking and BMI as the dominant cost drivers.
     </p>
+
     <p>
-      The final model incorporated an interaction between BMI and smoking and achieved an
-      adjusted R² of 0.84, illustrating how lifestyle factors compound
-      financial risk in healthcare.
+      The final model incorporated an interaction between BMI and smoking and
+      achieved an adjusted R² of 0.84, illustrating how lifestyle factors
+      compound financial risk in healthcare.
     </p>
+
     <p>
-      <a href="./reports/medical_insurance_handout.pdf">Project Handout (PDF)</a>
+      <a href="./reports/medical_insurance_handout.pdf">
+        Project Handout (PDF)
+      </a>
     </p>
   </div>
-  
-  <div class="card">
-  <h3>Hardware Store Sales Database</h3>
-  <p><em>Relational Database Design, ETL, and Reporting</em></p>
-
-  <p>
-    Designed and implemented a relational database to transform messy, spreadsheet-based
-    sales records into a structured, query-ready system. Built a Python-based ETL pipeline
-    to generate customer and invoice identifiers, enforce referential integrity, and prepare
-    the data for accurate sales and financial reporting.
-  </p>
-
-  <p><strong>Key components:</strong></p>
-  <ul>
-    <li>Normalized schema for customers, invoices, invoice details, products, and location data</li>
-    <li>Automated ID generation logic for customers and invoices</li>
-    <li>Foreign key constraints to ensure data accuracy and consistency</li>
-    <li>Reporting-ready database supporting SQL-style queries and summaries</li>
-  </ul>
-
-  <p>
-    <a href="./reports/PaulinaSkurzak-3.pdf" target="_blank">
-      Relational Database & ETL Pipeline (Python & SQLite)
-    </a>
-  </p>
-</div>
 
   <!-- Research -->
   <div class="card">
     <h3>Missing Data, Imputation, and Policy-Relevant Analysis</h3>
     <p><em>Research Fellow, Global Research Institute</em></p>
+
     <p>
-      Evaluated how missing-data imputation affects global healthcare expenditure 
-      modeling using World Bank data from 211 economies (2000–2025). Compared 
-      traditional and machine-learning-based imputation methods using RMSE and R², 
-      showing that advanced approaches such as random forest and MICE improve 
-      predictive accuracy and explanatory power in cross-country health financing 
+      Evaluated how missing-data imputation affects global healthcare expenditure
+      modeling using World Bank data from 211 economies (2000–2025). Compared
+      traditional and machine-learning-based imputation methods using RMSE and R²,
+      showing that advanced approaches such as random forest and MICE improve
+      predictive accuracy and explanatory power in cross-country health financing
       analysis.
     </p>
+
     <p><strong>Key analysis scripts (R):</strong></p>
+
     <ul>
       <li>
         <a href="./reports/01_global_health_data_cleaning.R">
-      01_global_health_data_cleaning.R
+          01_global_health_data_cleaning.R
         </a>
-        — data cleaning, indicator mapping, missingness diagnostics, and MCAR testing
+        — data cleaning, indicator mapping, missingness diagnostics,
+        and MCAR testing
       </li>
+
       <li>
         <a href="./reports/02_global_health_imputation_comparison.R">
-      02_global_health_imputation_comparison.R
+          02_global_health_imputation_comparison.R
         </a>
-        — comparison of mean, KNN, regression, MICE, and random forest imputation with model evaluation
+        — comparison of mean, KNN, regression, MICE, and random forest
+        imputation with model evaluation
       </li>
     </ul>
 
     <p>
-      <a href="./reports/Abstract_PaulinaSkurzak.pdf">Abstract (PDF)</a>
+      <a href="./reports/Abstract_PaulinaSkurzak.pdf">
+        Abstract (PDF)
+      </a>
     </p>
   </div>
-  
-<div class="card">
-  <h3>World Bank Indicator Data Pipeline (R)</h3>
-  <p><em>Data Engineering and Longitudinal Indicator Processing</em></p>
-
-  <p>
-    Built an R-based pipeline to download, clean, and restructure World Bank
-    development indicators across health, poverty, education, gender,
-    agriculture, and aid effectiveness domains. The pipeline produces
-    wide-format country–year datasets and indicator metadata for longitudinal
-    research spanning 2000–2025.
-  </p>
-
-  <p>
-    <a href="./reports/RStudio.pdf">Pipeline Documentation (PDF)</a>
-  </p>
-</div>
 
   <div class="card">
-  <h3>Global Health Indicator Data Pipelines (WHO)</h3>
-  <p><em>Data Engineering and Automation</em></p>
+    <h3>World Bank Indicator Data Pipeline (R)</h3>
+    <p><em>Data Engineering and Longitudinal Indicator Processing</em></p>
 
-  <p>
-    Developed Python-based pipelines to automate extraction and structuring of
-    global health indicators from the WHO Global Health Observatory. This project
-    focuses on scalable data ingestion, script generation, and reproducible outputs
-    for downstream research and analysis.
-  </p>
+    <p>
+      Built an R-based pipeline to download, clean, and restructure World Bank
+      development indicators across health, poverty, education, gender,
+      agriculture, and aid effectiveness domains.
+    </p>
 
-  <p><strong>Core scripts:</strong></p>
-  <ul>
-    <li>
-      <a href="https://github.com/claudiacordero0419/WHO_Data/blob/main/Paulina_Indicators/generate_topic_scripts.py"
-         target="_blank">
-        generate_topic_scripts.py
+    <p>
+      <a href="./reports/RStudio.pdf">
+        Pipeline Documentation (PDF)
       </a>
-      — programmatically generates topic-specific WHO indicator extraction scripts
-    </li>
-    <li>
-      <a href="https://github.com/claudiacordero0419/WHO_Data/blob/main/Paulina_Indicators/gho_paulina.py"
-         target="_blank">
-        gho_paulina.py
-      </a>
-      — core data ingestion and preprocessing engine for WHO GHO indicators
-    </li>
-  </ul>
+    </p>
+  </div>
 
-  <p>
-    <a href="https://github.com/claudiacordero0419/WHO_Data" target="_blank">
-      View Repository (GitHub)
-    </a>
-  </p>
-</div>
-  
-    <!-- Applied Machine Learning -->
+  <div class="card">
+    <h3>Global Health Indicator Data Pipelines (WHO)</h3>
+    <p><em>Data Engineering and Automation</em></p>
+
+    <p>
+      Developed Python-based pipelines to automate extraction and structuring of
+      global health indicators from the WHO Global Health Observatory.
+    </p>
+
+    <p><strong>Core scripts:</strong></p>
+
+    <ul>
+      <li>
+        <a href="https://github.com/claudiacordero0419/WHO_Data/blob/main/Paulina_Indicators/generate_topic_scripts.py"
+           target="_blank">
+          generate_topic_scripts.py
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/claudiacordero0419/WHO_Data/blob/main/Paulina_Indicators/gho_paulina.py"
+           target="_blank">
+          gho_paulina.py
+        </a>
+      </li>
+    </ul>
+
+    <p>
+      <a href="https://github.com/claudiacordero0419/WHO_Data" target="_blank">
+        View Repository (GitHub)
+      </a>
+    </p>
+  </div>
+
+  <!-- Applied Machine Learning -->
   <div class="card">
     <h3>Comparative Machine Learning Model Evaluation</h3>
     <p><em>Classical and Deep Learning Approaches</em></p>
+
     <p>
       Implemented and evaluated multiple machine learning models including
       neural networks with PyTorch, a convolutional neural network,
-      gradient boosting, and random forest models. Emphasized model comparison,
-      evaluation, and selection within a complete machine learning workflow.
+      gradient boosting, and random forest models.
     </p>
+
     <p>
       <a href="https://github.com/PaulinaSkurzak/applied-machine-learning/blob/main/Final%20Coding%20Applied%20Machine%20Learning%202025.ipynb">
         View Notebook (GitHub)
@@ -245,53 +238,105 @@
   <div class="card">
     <h3>Reinforcement Learning for Sepsis Treatment Simulation</h3>
     <p><em>Sequential Decision-Making and Safety-Constrained RL</em></p>
-    <p>
-      Implemented and evaluated reinforcement learning methods in a simulated 
-      environment modeling treatment policies for sepsis patients. Focused on policy 
-      learning, reward design, safety constraints, and performance evaluation in a clinical 
-      decision-making setting.
 
-    </p>
     <p>
-      <a href="./reports/RL_Final_Paulina_Skurzak.pdf">Final Report (PDF)</a>
+      Implemented and evaluated reinforcement learning methods in a simulated
+      environment modeling treatment policies for sepsis patients. Focused on
+      policy learning, reward design, safety constraints, and performance
+      evaluation in a clinical decision-making setting.
+    </p>
+
+    <p>
+      <a href="./reports/RL_Final_Paulina_Skurzak.pdf">
+        Final Report (PDF)
+      </a>
     </p>
   </div>
 
-   <!-- Generative AI -->
+  <!-- Autonomous Experimentation -->
+  <div class="card">
+    <h3>Autonomous Experimentation Agents for Scientific Discovery</h3>
+    <p><em>Scientific AI, Literature Review, and Research Synthesis</em></p>
+
+    <p>
+      Conducted a structured survey of 47 papers (2020–2026) on autonomous
+      experimentation systems across chemistry, biology, and materials science,
+      synthesizing trends in closed-loop experimentation, Bayesian optimization,
+      and LLM-based scientific agents.
+    </p>
+
+    <p>
+      Developed a taxonomy of system autonomy and methodologies, analyzing
+      limitations in reliability, multimodal reasoning, safety validation,
+      and human oversight in scientific AI systems.
+    </p>
+
+    <p>
+      <a href="./reports/autonomous_experimentation_review.pdf">
+        Literature Review (PDF)
+      </a>
+    </p>
+  </div>
+
+  <!-- Generative AI -->
   <div class="card">
     <h3>Generative AI Model Analysis</h3>
     <p><em>Model Evaluation and Applied Use Cases</em></p>
+
     <p>
-      Conducted a systematic robustness analysis of large language model safety 
-      behavior by evaluating refusal consistency under adversarial prompt framing. 
-      Designed and tested twelve framing strategies while holding disallowed intent 
-      constant, analyzing refusal quality, partial compliance, and information leakage.
+      Conducted a systematic robustness analysis of large language model safety
+      behavior by evaluating refusal consistency under adversarial prompt framing.
+      Designed and tested twelve framing strategies while holding disallowed
+      intent constant, analyzing refusal quality, partial compliance, and
+      information leakage.
     </p>
+
     <p>
-      <a href="./reports/GenAI%20Final.pdf">Final Report (PDF)</a>
+      <a href="./reports/GenAI%20Final.pdf">
+        Final Report (PDF)
+      </a>
     </p>
   </div>
-  
-  <!-- Applied Machine Learning -->
+
+  <!-- Supercomputing -->
+  <div class="card">
+    <h3>Scientific Supercomputing Project</h3>
+    <p><em>High-Performance Computing and Computational Analysis</em></p>
+
+    <p>
+      Used high-performance computing resources to execute computationally
+      intensive scientific workflows, emphasizing scalability, reproducibility,
+      and efficient use of compute resources for large-scale analysis.
+    </p>
+
+    <p>
+      Explored workflow design, performance considerations, and computational
+      tradeoffs in resource-intensive modeling and data processing tasks.
+    </p>
+
+    <p>
+      <a href="./reports/supercomputing_project.pdf">
+        Project Report (PDF)
+      </a>
+    </p>
+  </div>
+
+  <!-- Neural Network -->
   <div class="card">
     <h3>Neural Network from Scratch</h3>
     <p><em>Core Model Implementation and Backpropagation</em></p>
+
     <p>
       Implemented a feedforward neural network from scratch in Python to perform
-      classification, without relying on high-level deep learning frameworks.
-      Built forward propagation, backpropagation, and gradient descent manually
-      to develop a deeper understanding of how neural networks learn.
+      classification without relying on high-level deep learning frameworks.
     </p>
+
     <p>
       <a href="https://github.com/PaulinaSkurzak/applied-machine-learning/blob/main/Coding%20a%20Neural%20Network%20from%20Scratch.ipynb">
         View Notebook (GitHub)
       </a>
     </p>
   </div>
-
-
-
-
 
 </body>
 </html>
