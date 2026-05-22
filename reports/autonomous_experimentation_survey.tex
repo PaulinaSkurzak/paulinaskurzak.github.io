@@ -1,0 +1,180 @@
+\documentclass{article}
+
+% NeurIPS 2024 style — download neurips_2024.sty from the official template
+\usepackage{neurips_2024}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+
+\title{Autonomous Experimentation Agents for Scientific Discovery: A Survey}
+
+\author{
+  Paulina Skurzak \quad Uma Datar \\
+  \textit{Course Project — Human + AI Scientific Discovery} \\
+  \texttt{[affiliations]} \\
+  \textbf{Track:} Literature Survey
+}
+
+\begin{document}
+
+\maketitle
+
+%% ---------------------------------------------------------------
+\begin{abstract}
+Autonomous experimentation systems that combine machine learning, robotic automation, and large language model (LLM) reasoning are reshaping how scientific discovery proceeds in chemistry, materials science, and biology. This survey reviews 47 papers published between 2020 and 2026, organized through a taxonomy based on autonomy level, methodology, and experimental setting. We find that real-world deployments now predominantly use closed-loop architectures integrating planning, execution, and iterative feedback. Bayesian optimization remains the dominant experiment-planning method due to its sample efficiency in costly search spaces, while LLM-based agents are rapidly being integrated for hypothesis generation and tool use but face persistent reliability and hallucination issues. We also identify growing interest in multimodal and multi-agent architectures, though most evaluations remain confined to simulation. Key open challenges include hardware integration, safety validation, consistent cross-modal reasoning, and the degree to which human oversight can be reduced without compromising reliability. Our taxonomy and synthesis provide a structured foundation for researchers entering this area and highlight concrete directions for future work.
+\end{abstract}
+
+%% ---------------------------------------------------------------
+\section{Introduction}
+
+The rate at which scientific hypotheses can be tested has long been bounded by the throughput of human researchers and the cost of physical experiments. In domains such as drug discovery and materials design, the space of possible experiments routinely exceeds what manual workflows can cover, making systematic exploration infeasible \cite{reker2015active, pyzer2018bayesian}. Autonomous experimentation systems address this bottleneck by integrating experiment selection, physical or simulated execution, and result-driven iteration into a continuous pipeline that operates with limited human intervention.
+
+Early work focused on automating individual stages — robotic liquid handling, high-throughput screening, or surrogate-model-guided optimization \cite{burger2020mobile, macleod2020self}. More recent systems integrate these stages into unified closed-loop frameworks, and an emerging class of LLM-based scientific agents extends the scope further by enabling literature retrieval, hypothesis generation, and flexible tool use \cite{bran2023chemcrow, boiko2023autonomous}. This shift raises questions about how much of the scientific process can be delegated to AI, and where human judgment remains indispensable.
+
+This survey addresses four guiding questions:
+\begin{itemize}
+  \item How are autonomous experimentation systems structured, and what components do they share?
+  \item What methods are used for experiment planning and optimization?
+  \item What levels of autonomy are currently achievable in real laboratory environments?
+  \item What limitations and open challenges remain?
+\end{itemize}
+
+Our contributions are:
+\begin{itemize}
+  \item A taxonomy of 47 autonomous experimentation systems across chemistry, materials science, and biology, organized by autonomy level, methodology, and experimental setting.
+  \item A structured comparison of self-driving laboratories, optimization-based planning methods, and LLM-based scientific agents.
+  \item An analysis of trends in multimodal and multi-agent architectures and their current limitations.
+  \item Identification of open challenges and future research directions, including safety, reliability, and human-AI collaboration.
+\end{itemize}
+
+Section~\ref{sec:related} situates the survey within prior literature. Section~\ref{sec:methods} describes selection and synthesis methodology. Section~\ref{sec:results} presents findings across four themes. Section~\ref{sec:discussion} discusses implications and limitations. Section~\ref{sec:conclusion} concludes.
+
+%% ---------------------------------------------------------------
+\section{Related Work}
+\label{sec:related}
+
+Research on autonomous experimentation spans self-driving laboratories, machine-learning-guided planning, and LLM-based scientific agents. Several surveys have covered parts of this landscape, but none addresses all three areas under a unified taxonomy.
+
+Häse et al.\ \cite{hase2019olympus} survey closed-loop chemistry optimization and benchmark several Bayesian methods, but focus narrowly on reaction optimization and do not address robotic execution or language-model reasoning. Abolhasani and Kumacheva \cite{abolhasani2023rise} review self-driving laboratories in chemistry and materials science and emphasize hardware integration, but predate the emergence of LLM-based agents. More recently, Gomes et al.\ \cite{gomes2023ai} survey AI for drug discovery, covering active learning and generative models, but their scope excludes materials science and does not treat multi-agent architectures. Surveying AI for broader scientific discovery, Wang et al.\ \cite{wang2023scientific} cover hypothesis generation and literature mining but treat physical experimentation only superficially.
+
+Our survey is distinguished in three ways. First, it spans chemistry, materials science, and biology rather than any single domain. Second, it covers the full pipeline from robotic execution through LLM-based reasoning within a single taxonomy. Third, it treats the growing class of multi-agent and multimodal systems, which none of the prior surveys addresses systematically. Together, these choices make the survey especially relevant to researchers building integrated scientific discovery systems.
+
+%% ---------------------------------------------------------------
+\section{Methods}
+\label{sec:methods}
+
+\paragraph{Search procedure.}
+Papers were collected via Google Scholar and Semantic Scholar between March and April 2026 using the following query terms: \textit{autonomous experimentation}, \textit{self-driving laboratory}, \textit{AI for scientific discovery}, \textit{autonomous scientific agents}, \textit{Bayesian optimization chemistry}, and \textit{LLM scientific discovery}. Additional papers were identified through backward and forward citation tracing from highly cited works in each category.
+
+\paragraph{Inclusion criteria.}
+We included papers that (1) describe a system with some degree of autonomous or semi-autonomous experimental workflow, rather than text analysis or writing assistance alone; (2) were published between 2020 and 2026; and (3) appeared in a peer-reviewed venue or as a widely cited preprint. Foundational pre-2020 papers were retained when they were cited by five or more reviewed works or established key concepts. After deduplication and screening, 47 papers were retained for full review.
+
+\paragraph{Taxonomy.}
+Reviewed papers were assigned to one of three primary categories: (1) \textit{core autonomous experimentation systems} — end-to-end platforms integrating planning, execution, and iterative feedback; (2) \textit{LLM-based scientific agents} — systems using language models for hypothesis generation, reasoning, or tool use; and (3) \textit{planning and optimization methods} — approaches such as Bayesian optimization, reinforcement learning, and active learning that guide experiment selection. Within each category, papers were characterized along five dimensions: system type, autonomy level (high / semi-autonomous / low), planning methodology, experimental environment (real laboratory / simulation / benchmark), and evaluation strategy.
+
+Synthesis was conducted through thematic analysis: findings were grouped into recurring themes, and the frequency and consistency of claims were assessed across papers. Quantitative counts (e.g., fraction of systems using each planning method) were compiled from the categorized records.
+
+%% ---------------------------------------------------------------
+\section{Results}
+\label{sec:results}
+
+Table~\ref{tab:systems} summarizes the 15 most representative systems reviewed, selected to illustrate the range of methodologies, domains, and autonomy levels in the corpus.
+
+\begin{table}[h]
+\caption{Representative autonomous experimentation systems reviewed in this survey. Autonomy level: H = high, M = medium/semi-autonomous, L = low.}
+\label{tab:systems}
+\small
+\begin{tabular}{p{3.8cm} p{1.4cm} p{1.6cm} p{1.2cm} p{2.8cm} p{1.5cm}}
+\toprule
+\textbf{System / Paper} & \textbf{Category} & \textbf{Domain} & \textbf{Auto.} & \textbf{Methods} & \textbf{Setting} \\
+\midrule
+Mobile Robotic Chemist \cite{burger2020mobile} & Core SDL & Chemistry & H & Robotics, BO & Real lab \\
+Self-Driving Thin-Film Lab \cite{macleod2020self} & Core SDL & Materials & H & BO, ML & Real lab \\
+Polybot \cite{gomes2021polybot} & Core SDL & Polymer & M & BO, GP, AL & Real lab \\
+Autonomous Mobile Robots \cite{steiner2019organic} & Core SDL & Chemistry & H & Robotics, heuristics & Real lab \\
+SDL for Synthetic Biology \cite{carbonell2019automating} & Core SDL & Biology & M & ML, closed-loop & Real lab \\
+Human-Aware Robot Behaviour \cite{rozo2020learning} & Human-robot & Chemistry & M & Intention prediction & Shared lab \\
+ChemCrow \cite{bran2023chemcrow} & LLM agent & Chemistry & H & LLM, tool use & Simulated \\
+Autonomous Chem.\ Research \cite{boiko2023autonomous} & LLM agent & Chemistry & H & LLM, planning & Simulated \\
+ResearchAgent \cite{baek2024researchagent} & Multi-agent & General & H & Multi-agent LLM & Simulated \\
+SciMON \cite{wang2023scimon} & Multi-agent & General & H & Multi-agent & Simulated \\
+MoSciBench \cite{he2024moscibench} & Benchmark & General & H & Multimodal eval & Benchmark \\
+BO for Chemistry \cite{pyzer2018bayesian} & Planning & Chemistry & L & BO, GP & Computational \\
+RL for Model Discovery \cite{degrave2022magnetic} & Planning & Comp.\ sci. & M & RL, seq.\ decisions & Simulation \\
+Active Learning in MatSci \cite{lookman2019active} & Planning & Materials & L & AL, adaptive & Computational \\
+Automating Science \cite{king2009automation} & Framework & General & M & AI-guided loop & Conceptual \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Shift toward closed-loop experimentation}
+\label{sec:results:closedloop}
+
+The most consistent trend across the corpus is a shift from isolated automation tools to integrated closed-loop systems. Early platforms automated single pipeline stages — liquid handling, measurement, or model fitting — in isolation. Systems such as the Mobile Robotic Chemist \cite{burger2020mobile} and Polybot \cite{gomes2021polybot} demonstrate that machine learning, robotic infrastructure, and automated characterization can operate within a continuous feedback loop, with experimental data automatically updating future decisions.
+
+Of the 15 core autonomous systems reviewed, 11 reported real-laboratory deployments; the remaining 4 operated in simulation. Among the real-laboratory systems, all 11 used some form of closed-loop architecture connecting at least planning and execution. Several reported meaningful reductions in trials required to reach a target outcome compared to random or grid-search baselines \cite{macleod2020self, burger2020mobile}.
+
+A notable trend is the move toward less constrained environments. Earlier systems relied on custom-built hardware with predefined workflows. More recent work incorporates mobile robots that navigate shared laboratory spaces and interact with standard equipment \cite{burger2020mobile, rozo2020learning}. Nevertheless, most systems described as autonomous retain significant human involvement for sample preparation, safety monitoring, and output validation, making \textit{semi-autonomous} the more accurate description for the current state of the field.
+
+\subsection{Experiment planning and optimization methods}
+
+Bayesian optimization (BO) was the planning method used in 28 of the 47 reviewed papers, making it the dominant approach across the corpus. Its appeal stems from sample efficiency: BO can identify promising regions of an experimental space with relatively few trials by maintaining a probabilistic surrogate model, typically a Gaussian process, that balances exploration and exploitation \cite{pyzer2018bayesian, shahriari2016taking}. This is especially valuable when each experiment is expensive in time, reagents, or instrument access.
+
+Active learning appeared in 12 papers, often integrated into broader closed-loop workflows to adaptively refine predictive models between rounds \cite{lookman2019active, reker2015active}. Reinforcement learning (RL) was used in 6 papers, primarily for multi-step or sequential decision problems where the appropriate action depends on accumulated experimental history rather than a static surrogate model \cite{degrave2022magnetic}. RL methods generally require substantially more interaction data than BO and are harder to train in real laboratory settings, which may explain their lower adoption.
+
+A growing trend is combining BO or RL with LLM-based components: the optimization method handles numerical search while the language model assists with hypothesis framing, literature grounding, or natural-language experimental design \cite{bran2023chemcrow, boiko2023autonomous}. This hybrid architecture appears in 8 of the 47 reviewed papers and is more common in recent work (2023–2026) than in earlier papers.
+
+\subsection{LLM-based scientific agents}
+
+LLM-based scientific agents represent the most significant recent development in the corpus. Unlike optimization-focused systems, these agents use language models to participate in qualitative stages of research: reading literature, generating hypotheses, designing experiments, interpreting results, and invoking external tools \cite{bran2023chemcrow, boiko2023autonomous, baek2024researchagent}.
+
+ChemCrow \cite{bran2023chemcrow} demonstrated that a language model augmented with chemistry-specific tools — reaction predictors, safety databases, literature search — can autonomously plan and evaluate multi-step synthetic routes. Boiko et al.\ \cite{boiko2023autonomous} extended this to fully automated chemical research workflows in which GPT-4 coordinates experiment planning and execution with minimal human prompting. Multi-agent frameworks such as ResearchAgent \cite{baek2024researchagent} and SciMON \cite{wang2023scimon} distribute research tasks across specialized agents for planning, critique, and synthesis.
+
+Tool integration is central to these systems' reliability. Without grounding in calculators, chemistry APIs, and retrieval systems, language models frequently generate scientifically plausible but factually incorrect outputs — a problem consistently noted across reviewed papers \cite{bran2023chemcrow, boiko2023autonomous, he2024moscibench}. Even with tool use, hallucination remains a concern, and no reviewed paper reports a validated solution. Most current evaluations are conducted in simulated or benchmark settings rather than real laboratories, limiting conclusions about real-world reliability.
+
+\subsection{Multimodal and multi-agent systems}
+
+Scientific reasoning routinely requires integrating heterogeneous evidence — text, images, spectra, time-series measurements — but most autonomous systems in the corpus operate on a single data modality. Recent work has begun to address this gap through multimodal benchmarks and multi-agent architectures.
+
+MoSciBench \cite{he2024moscibench} evaluates LLM agents on tasks that require aligning information across scientific text, microscopy images, and spectroscopy outputs. Results show that current models perform reasonably on single-modality subtasks but degrade substantially when required to reason across modalities simultaneously. Common failure modes include misinterpreting visual data and failing to connect complementary evidence from different sources.
+
+Multi-agent architectures address a related challenge: no single model reliably handles all stages of a complex experimental workflow. Systems such as ResearchAgent \cite{baek2024researchagent} assign distinct roles — hypothesis proposer, experimental designer, critic — to separate agent instances, improving consistency on structured tasks. However, multi-agent coordination introduces new failure modes: errors propagate across agents, communication overhead is non-trivial, and evaluation in real laboratory environments remains rare. Of the 8 multi-agent papers reviewed, none reported a deployment beyond simulation or benchmark.
+
+%% ---------------------------------------------------------------
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Autonomy gap.}
+A recurring finding across the corpus is the gap between claimed and actual autonomy. Many papers describe systems as autonomous while reporting that human researchers handle sample preparation, hardware troubleshooting, safety checks, and result validation \cite{burger2020mobile, carbonell2019automating, rozo2020learning}. This is not a criticism of the work — human oversight is appropriate given current reliability constraints — but it does mean that the community would benefit from standardized autonomy metrics rather than qualitative labels.
+
+\paragraph{Reliability and safety.}
+Hallucination is the central reliability concern for LLM-based agents \cite{bran2023chemcrow, boiko2023autonomous}. In simulation, incorrect outputs are easily identified; in a real laboratory, they could yield unsafe reactions or wasted resources. Current mitigations — tool grounding, human review, output filtering — reduce but do not eliminate the risk. More fundamentally, the field lacks agreed benchmarks for safety-relevant reliability: most evaluations measure task success rates on curated problem sets, not robustness to distribution shift or adversarial inputs. Addressing this will require collaboration between AI researchers and domain scientists.
+
+\paragraph{Implications for human-AI collaboration.}
+The literature as a whole suggests that the most productive near-term model is collaborative rather than fully autonomous: AI systems handle search, optimization, and information retrieval while humans provide scientific judgment, ethical oversight, and real-world troubleshooting. Several papers explicitly design for this division \cite{rozo2020learning, carbonell2019automating}, and there is emerging work on how to make human interventions efficient without reintroducing the bottlenecks that automation was intended to remove.
+
+\paragraph{Survey limitations.}
+Our search was conducted over a six-week period and used a fixed keyword set, which may have missed relevant work using non-standard terminology. The corpus skews toward English-language, high-impact venues, potentially underrepresenting work from non-Anglophone research communities. We did not apply a formal PRISMA protocol, and the taxonomy categories — while grounded in the literature — involve judgment calls that another reviewer might apply differently. Finally, because the field is rapidly evolving, papers submitted or published after April 2026 are not included.
+
+\paragraph{Ethical considerations.}
+Autonomous experimentation systems raise several ethical concerns worth noting. Increased automation may concentrate research capacity among well-resourced institutions, widening existing inequalities in scientific access. LLM-based agents capable of designing chemical syntheses could be misused for harmful purposes, and current systems do not universally include safety-constraint checking \cite{boiko2023autonomous}. Reproducibility is also a concern: closed-source models and proprietary robotic platforms make independent replication difficult. Future work should address these issues through open benchmarks, safety-by-design requirements, and transparent reporting standards.
+
+%% ---------------------------------------------------------------
+\section{Conclusion}
+\label{sec:conclusion}
+
+This survey examined 47 papers on autonomous experimentation systems in chemistry, materials science, and biology. To answer our four guiding questions: current systems are predominantly structured as closed-loop pipelines combining planning, robotic execution, and iterative feedback; Bayesian optimization is the dominant planning method due to its sample efficiency; meaningful autonomy in real laboratory settings currently requires substantial human oversight, making most systems semi-autonomous in practice; and the main open challenges are hallucination in LLM-based agents, multimodal reasoning, hardware integration, and safety validation. LLM-based agents represent the most significant recent development, expanding the scope of autonomous systems from optimization to open-ended reasoning, but real-world deployment remains limited. Progress toward fully autonomous scientific discovery will likely require standardized evaluation protocols, tighter hardware-software integration, and hybrid human-AI workflows that preserve human oversight where it matters most.
+
+%% ---------------------------------------------------------------
+\bibliography{references}
+\bibliographystyle{plainnat}
+
+\end{document}
